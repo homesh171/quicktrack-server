@@ -13,12 +13,12 @@ dotenv.config();
 connectDB();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "https://quicktrack-client.vercel.app" }));
 app.use(express.json());
 
 const server = http.createServer(app);
 const io = new Server(server, {
-  cors: { origin: "*" }, // tighten to your Vercel URL in production
+  cors: { origin: "https://quicktrack-client.vercel.app" },
 });
 initSocket(io);
 
